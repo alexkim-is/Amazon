@@ -1,0 +1,10 @@
+{
+  "ignoreFiles": [
+    "**/node_modules/**/*.*", "examples/**/*.*"
+  ],
+  "rules": {
+    "function-comma-space-after": 1,
+    "number-leading-zero": "never,
+    "max-empty-lines": 1
+  }
+}
