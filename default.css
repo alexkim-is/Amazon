@@ -6,7 +6,28 @@ h1 {
   margin-left: 40%;
 }
 
-#inventory {
-  display: block;
-  margin-left: 40%;
+.container {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  width: 220px;
+  height: 350px;
+  text-align: center;
+  border: 1px solid lightgrey;
+}
+
+#pic {
+  width: 150px;
+  height: auto;
+  padding: auto;
+}
+
+#description {
+  color: darkgreen;
+  font-size: 18px;
+}
+
+#price {
+  color: red;
 }
