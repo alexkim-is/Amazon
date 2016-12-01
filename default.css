@@ -31,3 +31,11 @@ h1 {
 #price {
   color: red;
 }
+
+.hidden {
+  display: none;
+}
+
+.container:hover {
+  cursor: pointer;
+}
