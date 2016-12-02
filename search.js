@@ -7,7 +7,9 @@ var inventory = [
   { id: "6", description: "Cat food for cute cats. Make them even cutter!", name: "Cute cat", price: "$14.99", pic: "http://www.petsftw.com/wp-content/uploads/2016/03/cutecat.jpg"},
   { id: "7", description: "Cat food for kittnes. Keep them as kittens forever!", name: "Kittens", price: "$19.99", pic: "http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg"}
 ];
-
+var $search = document.getElementById('search-button');
+var $detailView = document.getElementById('detail-view');
+var $inventory = document.getElementById('inventory-view');
 
 function searchItems(AllItems, searchText) {
   var matchingItems = [];
@@ -49,12 +51,8 @@ function renderItem (eachItem) {
   return $container;
 }
 
-var $search = document.getElementById('search-button');
-var $view = document.getElementById('view');
-var $inventory = document.getElementById('inventory');
-
 //addEventListener for SEARCH CLICK
-// listen for 'click' ont the search form
+// listen for 'click' on the search form
 // prevent default behaivor
 // clear /empty any previous results
 // read the text withink search form and store
@@ -62,88 +60,79 @@ var $inventory = document.getElementById('inventory');
 // run the searchItems function using (inventory, "input")
 //loop through matchingitems[i] and for each, renderedItem, append it to $inventory which is 'veiw-html;
 
-$search.addEventListener('click', function(event) {
+$search.addEventListener('click', function (event) {
     event.preventDefault();
-    var $inventory = document.getElementById('inventory');
+    var $inventory = document.getElementById('inventory-view');
     $inventory.innerHTML = '';
     var $searchText = document.getElementById('search').value;
     if ($searchText.trim() == false) return;
     var $result = searchItems (inventory, $searchText);
     for (var i = 0; i < $result.length; i++) {
       var $renderResult = renderItem ($result[i]);
-      $inventory.appendChild($renderResult);
+      $inventory.appendChild($renderResult)
     }
   })
 
-// var $search = document.getElementById('search-button');
-// $search.addEventListener('click', function () {
-//   var $inventory = document.getElementById('inventory');
-//   $inventory.innerHTML = "";
-//   var $searchText = document.getElementById('search').value;
-//   if ($searchText.trim() == false) return;
-//   var $result = searchItems (inventory, $searchText);
-//   for (var i = 0; i < $result.length; i++) {
-//     var $renderResult = renderItem ($result[i]);
-//     $inventory.appendChild($renderResult);
-//     return $inventory;
-//   }
-// })
-//
-// // function renderClickedProduct
-// 1. clear the previous page view.
-// 2. hide any
-// 2. access the 'inventory' by id number.
-//
-// //
-// function renderClickedProduct (container) {
-//   var $active = document.getElementsByClassName('active')[0];
-//   $active.innerHTML = ""
-//
-//   $active.classList.add('hidden');
-//   $active.classList.remove('active');
-//   var details = document.getElementById ('details');
-//   details.classList.add('active');
-//   details.classList.remove('hidden');
-//   details.innerHTML ="";
-//   details.appendChild(container)
-// }
-//
-//
-// // var $showProduct = document.getElementById('container');
-// $showProduct.addEventListner('click', function(event){
-//   event.preventDefault();
-//   var $product = showProduct($showProduct);
-//   return;
-// })
+//Write a function for switching views when a product is clicked.
+// 1.
+// 2. Hide by removing active class and adding hidden class.
+// 3. Show by adding active class and removing hideen class.
 
-// var productPage = document.getElementById('inventory');
-// productPage.addEventListener('click', function (event){
-//   if (event.target.tagName !== "BUTTON") return;
-//   event.stopPropagation();
-//   if (!event.target.textContent) return;
-//   for (var i = 0; i < inventory.length; i++) {
-//     var item = inventory[i];
-//     if (item.id === event.target.dataset.id) {
-//
-//     }
-//   }
-//   var $dataId = event.target.dataset;
-//
-//   if ($dataId == $result.id) {
-//     return showProduct(productContainer)
-//   }
-// })
-//
+function showProduct (item) {
+  var $active = document.getElementsByClassName('active')[0];
+  $active.classList.remove("active");
+  $active.classList.add('hidden');
+  var $hidden = document.getElementsByClassName('hidden')[1];
+  $hidden.classList.remove('hidden');
+  $hidden.classList.add('active');
+  var $details = document.createElement('div');
+  $details.appendChild(item);
+  return $details
+}
+
+//An eventlisner that listens when a product is clicked.
+//1. Listen for a 'click' on a product('')
+//2. Prevent default bahvior.
+//3. Check to see if a 'container' was clicked.
+//4. Find the matching item.
+//5. Render Item.
+//6. Display the item.
+
+$inventory.addEventListener('click', function(event){
+  event.preventDefault();
+  if (event.target.className == 'container') {
+    for (var i = 0; i < inventory.length; i++) {
+      var item = inventory[i];
+      if (event.target.dataset.id == item.id) {
+        var $renderItem = renderItem(item);
+        var $showItem = showProduct($renderItem);
+        $detailView.appendChild($showItem)
+      }
+    }
+  }
+})
+
+
+/*1. Add an eventListner for cart button.
+  2. When clicked, check for it's id reference.
+  3. If math, add to cart.
+
+
+  Need 1. Event Listner w/ id checking fuction.
+       2. Function for cart
+
+*/
 
 
 
-  // if (event.target.dataset == inventory.id) {
-  //   return showProduct(productContainer)
-  // }
 
-//if not, dataset.id. don'tr run function
-// if there is id on dataset, convert (html string) id back to number.
-//
-// number(mystring) - number constructor/ global
-// +mystring
-//
+
+
+
+
+
+
+
+
+//if no result, show "no resul" sorry meow we are working on it.
+//search box place holder
