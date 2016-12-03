@@ -1,15 +1,18 @@
 var inventory = [
-  { id: "1", description: "Cat food for lazy cats. Make them more active!", name: "Lazy cat", price: "$10.99", pic: "http://london.trusttown.net/wp-content/uploads/2015/04/lazy-cat-tries-to-help-9.jpg"},
-  { id: "2", description: "Cat food for fat cats. Make them lose weight!", name: "Fat cat", price: "$11.99", pic: "http://static.flickr.com/34/122530930_6e16f1eb5c.jpg"},
-  { id: "3", description: "Cat food for angry cats. Make them less angry!", name: "Angry cat", price: "$9.99", pic: "http://geekologie.com/2016/02/17/angry-cat-7.jpg"},
-  { id: "4", description: "Cat food for grumpy cats. Make them less grumpy!", name: "Grumpy cat", price: "$12.99", pic: "https://pbs.twimg.com/profile_images/616542814319415296/McCTpH_E.jpg"},
-  { id: "5", description: "Cat food for skinny cats. Make them more plump!", name: "Skinny cat", price: "$15.99", pic: "http://www.theultimatecatwebsite.com/uploads/1/1/0/8/11083235/8953931_orig.jpg"},
-  { id: "6", description: "Cat food for cute cats. Make them even cutter!", name: "Cute cat", price: "$14.99", pic: "http://www.petsftw.com/wp-content/uploads/2016/03/cutecat.jpg"},
-  { id: "7", description: "Cat food for kittnes. Keep them as kittens forever!", name: "Kittens", price: "$19.99", pic: "http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg"}
+  { id: "1", description: "Cat food for lazy cats. Make them more active!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Lazy cat", price: "$10.99", pic: "http://london.trusttown.net/wp-content/uploads/2015/04/lazy-cat-tries-to-help-9.jpg"},
+  { id: "2", description: "Cat food for fat cats. Make them lose weight!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Fat cat", price: "$11.99", pic: "http://static.flickr.com/34/122530930_6e16f1eb5c.jpg"},
+  { id: "3", description: "Cat food for angry cats. Make them less angry!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Angry cat", price: "$9.99", pic: "http://geekologie.com/2016/02/17/angry-cat-7.jpg"},
+  { id: "4", description: "Cat food for grumpy cats. Make them less grumpy!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Grumpy cat", price: "$12.99", pic: "https://pbs.twimg.com/profile_images/616542814319415296/McCTpH_E.jpg"},
+  { id: "5", description: "Cat food for skinny cats. Make them more plump!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Skinny cat", price: "$15.99", pic: "http://www.theultimatecatwebsite.com/uploads/1/1/0/8/11083235/8953931_orig.jpg"},
+  { id: "6", description: "Cat food for cute cats. Make them even cutter!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Cute cat", price: "$14.99", pic: "http://www.petsftw.com/wp-content/uploads/2016/03/cutecat.jpg"},
+  { id: "7", description: "Cat food for kittnes. Keep them as kittens forever!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Kittens", price: "$19.99", pic: "http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg"}
 ];
 var $search = document.getElementById('search-button');
 var $detailView = document.getElementById('detail-view');
 var $inventory = document.getElementById('inventory-view');
+
+var cart = [];
+var $cart = document.getElementById ('cart');
 
 function searchItems(AllItems, searchText) {
   var matchingItems = [];
@@ -40,12 +43,43 @@ function renderItem (eachItem) {
   var $price = document.createElement('div');
   $price.setAttribute('id', 'price');
   $price.textContent = eachItem.price;
+  // var $cartButton = document.createElement('button');
+  // $cartButton.setAttribute('id', 'cartButton');
+  // $cartButton.textContent = 'Add to Cart';
+  $container.appendChild($pic);
+  $container.appendChild($name);
+  $container.appendChild($description);
+  $container.appendChild($price);
+  // $container.appendChild($cartButton);
+  return $container;
+}
+
+function renderItemDetail (eachItem) {
+  var $container = document.createElement('div');
+  $container.className = 'container';
+  $container.dataset.id = eachItem.id;
+  var $pic = document.createElement('img');
+  $pic.setAttribute('id', 'pic')
+  $pic.setAttribute('src', eachItem.pic);
+  var $name = document.createElement('h3');
+  $name.setAttribute('id', 'name');
+  $name.textContent = eachItem.name;
+  var $description = document.createElement ('p');
+  $description.setAttribute('id', 'description');
+  $description.textContent = eachItem.description;
+  var $detail = document.createElement ('p');
+  $detail.setAttribute('id', 'detail');
+  $detail.textContent = eachItem.detail;
+  var $price = document.createElement('div');
+  $price.setAttribute('id', 'price');
+  $price.textContent = eachItem.price;
   var $cartButton = document.createElement('button');
   $cartButton.setAttribute('id', 'cartButton');
   $cartButton.textContent = 'Add to Cart';
   $container.appendChild($pic);
   $container.appendChild($name);
   $container.appendChild($description);
+  $container.appendChild($detail);
   $container.appendChild($price);
   $container.appendChild($cartButton);
   return $container;
@@ -100,39 +134,28 @@ function showProduct (item) {
 
 $inventory.addEventListener('click', function(event){
   event.preventDefault();
-  if (event.target.className == 'container') {
+  if ( event.target.className == 'container') {
     for (var i = 0; i < inventory.length; i++) {
       var item = inventory[i];
       if (event.target.dataset.id == item.id) {
-        var $renderItem = renderItem(item);
-        var $showItem = showProduct($renderItem);
-        $detailView.appendChild($showItem)
+        var $renderItem = renderItemDetail(item);
+        showProduct($renderItem);
+        $detailView.appendChild($renderItem)
       }
     }
   }
 })
 
-
-/*1. Add an eventListner for cart button.
-  2. When clicked, check for it's id reference.
-  3. If math, add to cart.
-
-
-  Need 1. Event Listner w/ id checking fuction.
-       2. Function for cart
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-//if no result, show "no resul" sorry meow we are working on it.
-//search box place holder
+// Add an eventListner for the cart-button.
+//  1. Listen for a 'click'
+//  2. check to see if cartButton was clicked. If not return.
+//  3. check to make sure it's not an empty string. If empty return.
+//  4. Add to cart.
+$detailView.addEventListener('click', function (event) {
+  if (event.target.id !== 'cartButton') return;
+  if (event.target.textContent == '') return;
+  var item = $detailView;
+  cart.push(item);
+  $cart.textContent = cart.length + ' Items';
+  return
+})
