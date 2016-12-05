@@ -15,6 +15,8 @@ var cart = [];
 var $cart = document.getElementById ('cart');
 
 function searchItems(AllItems, searchText) {
+  $detailView.innerHTML = '';
+  $inventory.innerHTML = '';
   var matchingItems = [];
   for (var i = 0; i < AllItems.length; i++) {
     var theItem = AllItems[i];
@@ -56,7 +58,7 @@ function renderItem (eachItem) {
 
 function renderItemDetail (eachItem) {
   var $container = document.createElement('div');
-  $container.className = 'container';
+  $container.className = 'detail-container';
   $container.dataset.id = eachItem.id;
   var $pic = document.createElement('img');
   $pic.setAttribute('id', 'pic')
@@ -134,6 +136,7 @@ function showProduct (item) {
 
 $inventory.addEventListener('click', function(event){
   event.preventDefault();
+
   if ( event.target.className == 'container') {
     for (var i = 0; i < inventory.length; i++) {
       var item = inventory[i];
@@ -159,3 +162,50 @@ $detailView.addEventListener('click', function (event) {
   $cart.textContent = cart.length + ' Items';
   return
 })
+
+function hideProduct(item) {
+  var $active = document.getElementsByClassName('active')[0];
+  $active.classList.add('hidden');
+  $active.classList.remove("active");
+  var $hidden = document.getElementsByClassName('hidden')[0];
+  $hidden.classList.add('active');
+  $hidden.classList.remove('hidden');
+  $inventory.appendChild(item);
+  document.innerHTML = '';
+  inventory.innerHTML = ''
+}
+
+//Add an eventListner to revert back to search result.
+// 1. Listen for a click on document level.
+// 2. Prevent default bahavior.
+// 3. Check to see if element 'search-box' was clicked.
+// 4. If yes, then clear the page and call hideProduct function which hides.
+document.addEventListener('click', function (event){
+    if (event.target.id == 'search-box') {
+    $inventory.innerHTML ='';
+    $detailView.innerHTML ='';
+    hideProduct();
+  }
+  else if (event.target.id == 'title') {
+    $inventory.innerHTML = '';
+    $detailView.innerHTML = '';
+    hideProduct();
+  }
+})
+
+//This eventListner allows user to search for other items from detail view page.
+$detailView.addEventListener('click', function (event) {
+    event.preventDefault();
+    $inventory.innerHTML ='';
+    $detailView.innerHTML ='';
+    hideProduct();
+    var $inventory = document.getElementById('inventory-view');
+    $inventory.innerHTML = '';
+    var $searchText = document.getElementById('search').value;
+    if ($searchText.trim() == false) return;
+    var $result = searchItems (inventory, $searchText);
+    for (var i = 0; i < $result.length; i++) {
+      var $renderResult = renderItem ($result[i]);
+      $inventory.appendChild($renderResult)
+    }
+  })

@@ -2,6 +2,18 @@ h1 {
   margin-left: 40%;
 }
 
+#search-box:hover {
+  cursor: pointer;
+}
+
+#search-button:hover {
+  cursor: pointer;
+}
+
+#search-button {
+  height: 30px;
+}
+
 #search-term {
   margin-left: 40%;
 }
@@ -24,6 +36,18 @@ h1 {
   text-align: center;
   border: 1px solid lightgrey;
 }
+
+.detail-contianer {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  width: 220px;
+  height: auto;
+  text-align: center;
+  border: 1px solid lightgrey;
+}
+
 
 #pic {
   width: 150px;
