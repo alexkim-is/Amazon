@@ -1,11 +1,11 @@
 var inventory = [
-  { id: "1", description: "Cat food for lazy cats. Make them more active!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Lazy cat", price: "$10.99", pic: "http://london.trusttown.net/wp-content/uploads/2015/04/lazy-cat-tries-to-help-9.jpg"},
-  { id: "2", description: "Cat food for fat cats. Make them lose weight!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Fat cat", price: "$11.99", pic: "http://static.flickr.com/34/122530930_6e16f1eb5c.jpg"},
-  { id: "3", description: "Cat food for angry cats. Make them less angry!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Angry cat", price: "$9.99", pic: "http://geekologie.com/2016/02/17/angry-cat-7.jpg"},
-  { id: "4", description: "Cat food for grumpy cats. Make them less grumpy!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Grumpy cat", price: "$12.99", pic: "https://pbs.twimg.com/profile_images/616542814319415296/McCTpH_E.jpg"},
-  { id: "5", description: "Cat food for skinny cats. Make them more plump!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Skinny cat", price: "$15.99", pic: "http://www.theultimatecatwebsite.com/uploads/1/1/0/8/11083235/8953931_orig.jpg"},
-  { id: "6", description: "Cat food for cute cats. Make them even cutter!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Cute cat", price: "$14.99", pic: "http://www.petsftw.com/wp-content/uploads/2016/03/cutecat.jpg"},
-  { id: "7", description: "Cat food for kittnes. Keep them as kittens forever!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Kittens", price: "$19.99", pic: "http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg"}
+  { id: "1", description: "Cat food for lazy cats. Make them more active!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Lazy cat", price: 10.99, pic: "http://london.trusttown.net/wp-content/uploads/2015/04/lazy-cat-tries-to-help-9.jpg"},
+  { id: "2", description: "Cat food for fat cats. Make them lose weight!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Fat cat", price: 11.99, pic: "http://static.flickr.com/34/122530930_6e16f1eb5c.jpg"},
+  { id: "3", description: "Cat food for angry cats. Make them less angry!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Angry cat", price: 9.99, pic: "http://geekologie.com/2016/02/17/angry-cat-7.jpg"},
+  { id: "4", description: "Cat food for grumpy cats. Make them less grumpy!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Grumpy cat", price: 12.99, pic: "https://pbs.twimg.com/profile_images/616542814319415296/McCTpH_E.jpg"},
+  { id: "5", description: "Cat food for skinny cats. Make them more plump!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Skinny cat", price: 15.99, pic: "http://www.theultimatecatwebsite.com/uploads/1/1/0/8/11083235/8953931_orig.jpg"},
+  { id: "6", description: "Cat food for cute cats. Make them even cutter!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Cute cat", price: 14.99, pic: "http://www.petsftw.com/wp-content/uploads/2016/03/cutecat.jpg"},
+  { id: "7", description: "Cat food for kittnes. Keep them as kittens forever!", detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", name: "Kittens", price: 19.99, pic: "http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg"}
 ];
 var $search = document.getElementById('search-button');
 var $detailView = document.getElementById('detail-view');
@@ -44,7 +44,7 @@ function renderItem (eachItem) {
   $description.textContent = eachItem.description;
   var $price = document.createElement('div');
   $price.setAttribute('id', 'price');
-  $price.textContent = eachItem.price;
+  $price.textContent = '$ ' + eachItem.price;
   // var $cartButton = document.createElement('button');
   // $cartButton.setAttribute('id', 'cartButton');
   // $cartButton.textContent = 'Add to Cart';
@@ -74,7 +74,7 @@ function renderItemDetail (eachItem) {
   $detail.textContent = eachItem.detail;
   var $price = document.createElement('div');
   $price.setAttribute('id', 'price');
-  $price.textContent = eachItem.price;
+  $price.textContent = '$ ' + eachItem.price;
   var $cartButton = document.createElement('button');
   $cartButton.setAttribute('id', 'cartButton');
   $cartButton.textContent = 'Add to Cart';
@@ -170,19 +170,20 @@ document.addEventListener('click', function (event) {
     }
   }
   $cart.textContent = cart.length + ' Items';
+  console.log(cart);
 })
 
-function hideProduct() {
-  var $active = document.getElementsByClassName('active')[0];
-  $active.classList.add('hidden');
-  $active.classList.remove("active");
-  var $hidden = document.getElementsByClassName('hidden')[0];
-  $hidden.classList.add('active');
-  $hidden.classList.remove('hidden');
-  // inventory.appendChild();
-  document.innerHTML = '';
-  inventory.innerHTML = '';
-}
+// function hideProduct() {
+//   var $active = document.getElementsByClassName('active')[0];
+//   $active.classList.add('hidden');
+//   $active.classList.remove("active");
+//   var $hidden = document.getElementsByClassName('hidden')[0];
+//   $hidden.classList.add('active');
+//   $hidden.classList.remove('hidden');
+//   // inventory.appendChild();
+//   document.innerHTML = '';
+//   inventory.innerHTML = '';
+// }
 
 //Add an eventListner to revert back to search result.
 // 1. Listen for a click on document level.
@@ -237,8 +238,6 @@ function cartView () {
   var $continueShopping = document.createElement('h3');
   $continueShopping.setAttribute('id', 'cart-continueShopping');
   $continueShopping.textContent = "Continue Shopping";
-
-
   $cartView.appendChild($title);
   $cartView.appendChild($continueShopping);
   $cartViewWhole.appendChild($cartView);
@@ -262,7 +261,7 @@ function cartRenderItem (eachItem) {
   $description.textContent = eachItem.description;
   var $price = document.createElement('div');
   $price.setAttribute('id', 'cart-price');
-  $price.textContent = eachItem.price;
+  $price.textContent = '$ ' + eachItem.price;
   var $quantity= document.createElement('div');
   $quantity.setAttribute('id', 'cart-quantity');
   $quantity.textContent = 'Quantity: ';
@@ -277,6 +276,31 @@ function cartRenderItem (eachItem) {
   $cartViewWhole.appendChild($cartContainer);
 
   return $cartContainer;
+}
+
+function cartTotal () {
+  var $itemTotal = 0;
+  var $taxTotal = 0;
+  for (var i = 0; i < cart.length; i++) {
+    var $item = cart[i].price;
+    $itemTotal += $item;
+    var $tax = $item * 0.09;
+    $taxTotal += $tax;
+  }
+
+  var $cartTotal = document.createElement('div');
+  $cartTotal.setAttribute('id', 'cartTotal');
+  var $subTotal = document.createElement('div');
+  $subTotal.textContent = 'Sub-total: ' + '$ ' + $itemTotal.toFixed(2);
+  var $tax = document.createElement('div');
+  $tax.textContent = 'Tax: '+ '$ ' + $taxTotal.toFixed(2);
+  var $total = document.createElement('div');
+  $total.textContent = 'Total: ' + '$ ' + ($itemTotal + $taxTotal).toFixed(2);
+
+  $cartTotal.appendChild($subTotal);
+  $cartTotal.appendChild($tax);
+  $cartTotal.appendChild($total);
+  $cartViewWhole.appendChild($cartTotal);
 }
 
 //Cart view
@@ -296,8 +320,8 @@ document.addEventListener('click', function (event) {
       var $item = cart[i];
       var $cartItemView = cartRenderItem($item);
       $cartViewWhole.appendChild($cartItemView)
-
     }
+    cartTotal();
   }
 })
 

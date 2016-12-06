@@ -1,5 +1,8 @@
-h1 {
-  margin-left: 40%;
+#title {
+  text-align: center;
+  size: 35px;
+  color: orange;
+  text-shadow: 1px red;
 }
 
 #search-box:hover {
@@ -99,6 +102,7 @@ h1 {
 /* Cart View Page */
 #cart-page-title {
   text-align: center;
+  font-size: 30px;
 }
 
 #cart-page-view {
@@ -119,6 +123,10 @@ h1 {
 
 #cartContainer {
   outline: 1px solid blue;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 #cart-pic {
@@ -131,4 +139,10 @@ h1 {
 
 #nameDescription {
   display: inline;
+}
+
+#cartTotal {
+  font-size: 20px;
+  text-align: right;
+  float: right;
 }
