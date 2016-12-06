@@ -58,7 +58,7 @@ function renderItem (eachItem) {
 
 function renderItemDetail (eachItem) {
   var $container = document.createElement('div');
-  $container.className = 'detail-container';
+  $container.className = 'container';
   $container.dataset.id = eachItem.id;
   var $pic = document.createElement('img');
   $pic.setAttribute('id', 'pic')
@@ -78,6 +78,7 @@ function renderItemDetail (eachItem) {
   var $cartButton = document.createElement('button');
   $cartButton.setAttribute('id', 'cartButton');
   $cartButton.textContent = 'Add to Cart';
+  $cartButton.dataset.id = eachItem.id;
   $container.appendChild($pic);
   $container.appendChild($name);
   $container.appendChild($description);
@@ -107,6 +108,9 @@ $search.addEventListener('click', function (event) {
       var $renderResult = renderItem ($result[i]);
       $inventory.appendChild($renderResult)
     }
+    var $active = document.getElementById('inventory-view');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
   })
 
 //Write a function for switching views when a product is clicked.
@@ -115,10 +119,10 @@ $search.addEventListener('click', function (event) {
 // 3. Show by adding active class and removing hideen class.
 
 function showProduct (item) {
-  var $active = document.getElementsByClassName('active')[0];
+  var $active = document.getElementById('inventory-view');
   $active.classList.remove("active");
   $active.classList.add('hidden');
-  var $hidden = document.getElementsByClassName('hidden')[1];
+  var $hidden = document.getElementById('detail-view');
   $hidden.classList.remove('hidden');
   $hidden.classList.add('active');
   var $details = document.createElement('div');
@@ -134,16 +138,18 @@ function showProduct (item) {
 //5. Render Item.
 //6. Display the item.
 
+var $singleItem = [];
+
 $inventory.addEventListener('click', function(event){
   event.preventDefault();
-
-  if ( event.target.className == 'container') {
+  if (event.target.className == 'container') {
     for (var i = 0; i < inventory.length; i++) {
       var item = inventory[i];
       if (event.target.dataset.id == item.id) {
         var $renderItem = renderItemDetail(item);
         showProduct($renderItem);
-        $detailView.appendChild($renderItem)
+        $detailView.appendChild($renderItem);
+        $singleItem.push($renderItem)
       }
     }
   }
@@ -154,25 +160,28 @@ $inventory.addEventListener('click', function(event){
 //  2. check to see if cartButton was clicked. If not return.
 //  3. check to make sure it's not an empty string. If empty return.
 //  4. Add to cart.
-$detailView.addEventListener('click', function (event) {
+document.addEventListener('click', function (event) {
   if (event.target.id !== 'cartButton') return;
   if (event.target.textContent == '') return;
-  var item = $detailView;
-  cart.push(item);
+  for (var i = 0; i < inventory.length; i++) {
+      var item = inventory[i];
+      if (event.target.dataset.id == item.id) {
+      cart.push(item)
+    }
+  }
   $cart.textContent = cart.length + ' Items';
-  return
 })
 
-function hideProduct(item) {
+function hideProduct() {
   var $active = document.getElementsByClassName('active')[0];
   $active.classList.add('hidden');
   $active.classList.remove("active");
   var $hidden = document.getElementsByClassName('hidden')[0];
   $hidden.classList.add('active');
   $hidden.classList.remove('hidden');
-  $inventory.appendChild(item);
+  // inventory.appendChild();
   document.innerHTML = '';
-  inventory.innerHTML = ''
+  inventory.innerHTML = '';
 }
 
 //Add an eventListner to revert back to search result.
@@ -184,28 +193,127 @@ document.addEventListener('click', function (event){
     if (event.target.id == 'search-box') {
     $inventory.innerHTML ='';
     $detailView.innerHTML ='';
-    hideProduct();
+    $cartViewWhole.innerHTML = '';
+    var $active = document.getElementById ('search');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
+    var $active = document.getElementById ('search-button');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
   }
   else if (event.target.id == 'title') {
     $inventory.innerHTML = '';
     $detailView.innerHTML = '';
-    hideProduct();
+    $cartViewWhole.innerHTML = '';
+    var $active = document.getElementById ('search');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
+    var $active = document.getElementById ('search-button');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
   }
 })
 
-//This eventListner allows user to search for other items from detail view page.
-$detailView.addEventListener('click', function (event) {
+// CartView function - renders the items added to the cart and presents them.
+// 1. Function creates a div element of the cart id='cart'
+// 2. Renders Items in the cart and place them on the screen.
+//   - display: Item Pic, description, price, and quantity.
+var $cartViewWhole = document.getElementById('cart-view')
+function cartView () {
+  $inventory.innerHTML = '';
+  $detailView.innerHTML = '';
+
+  var $cartView = document.createElement('div');
+  var $active = document.getElementById('search')
+  $active.classList.remove("active");
+  $active.classList.add('hidden');
+  var $active = document.getElementById('search-button');
+  $active.classList.remove("active");
+  $active.classList.add('hidden');
+  $cartView.setAttribute('id', 'cart-page-view')
+  var $title = document.createElement('h2');
+  $title.setAttribute('id', 'cart-page-title');
+  $title.textContent = 'Shopping Cart';
+  var $continueShopping = document.createElement('h3');
+  $continueShopping.setAttribute('id', 'cart-continueShopping');
+  $continueShopping.textContent = "Continue Shopping";
+
+
+  $cartView.appendChild($title);
+  $cartView.appendChild($continueShopping);
+  $cartViewWhole.appendChild($cartView);
+  return $cartView
+}
+
+function cartRenderItem (eachItem) {
+  var $cartContainer = document.createElement('div');
+  $cartContainer.setAttribute('id', 'cartContainer')
+  var $nameAndDescription = document.createElement('div');
+  $nameAndDescription.setAttribute('id', 'nameDescription')
+  var $pic = document.createElement('img');
+  $pic.setAttribute ('id', 'cart-pic');
+  $pic.setAttribute ('src', eachItem.pic)
+  $cartContainer.append($pic);
+  var $name = document.createElement('div');
+  $name.setAttribute('id', 'cart-name');
+  $name.textContent = eachItem.name;
+  var $description = document.createElement('div');
+  $description.setAttribute('id', 'cart-description');
+  $description.textContent = eachItem.description;
+  var $price = document.createElement('div');
+  $price.setAttribute('id', 'cart-price');
+  $price.textContent = eachItem.price;
+  var $quantity= document.createElement('div');
+  $quantity.setAttribute('id', 'cart-quantity');
+  $quantity.textContent = 'Quantity: ';
+  // var $total
+  // var $checkout
+  $cartContainer.appendChild($pic);
+  $nameAndDescription.appendChild($name);
+  $nameAndDescription.appendChild($description);
+  $cartContainer.appendChild($nameAndDescription);
+  $cartContainer.appendChild($price);
+  $cartContainer.appendChild($quantity);
+  $cartViewWhole.appendChild($cartContainer);
+
+  return $cartContainer;
+}
+
+//Cart view
+// 1. Add an eventlistner for a 'click' on the cart.
+// 2. Call function that shows items in the cart.
+document.addEventListener('click', function (event) {
+  if (event.target.id !== 'cart') return;
+  else if (event.target.id === 'cart') {
     event.preventDefault();
-    $inventory.innerHTML ='';
-    $detailView.innerHTML ='';
-    hideProduct();
-    var $inventory = document.getElementById('inventory-view');
-    $inventory.innerHTML = '';
-    var $searchText = document.getElementById('search').value;
-    if ($searchText.trim() == false) return;
-    var $result = searchItems (inventory, $searchText);
-    for (var i = 0; i < $result.length; i++) {
-      var $renderResult = renderItem ($result[i]);
-      $inventory.appendChild($renderResult)
+    $cartViewWhole.innerHTML = '';
+    $detailView.innerHTML = '';
+    var $active = document.getElementById ('cart-view');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
+    cartView ();
+    for (var i = 0; i < cart.length; i++) {
+      var $item = cart[i];
+      var $cartItemView = cartRenderItem($item);
+      $cartViewWhole.appendChild($cartItemView)
+
     }
-  })
+  }
+})
+
+//Continue Shopping button click in cart view
+document.addEventListener('click', function (event) {
+  if (event.target.id === 'cart-continueShopping') {
+    $detailView.innerHTML ='';
+    $cartViewWhole.innerHTML ='';
+    var $active = document.getElementById ('search');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
+    var $active = document.getElementById ('search-button');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
+    var $active = document.getElementById ('inventory-view');
+    $active.classList.remove("hidden");
+    $active.classList.add('active');
+  }
+})

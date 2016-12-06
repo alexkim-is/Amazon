@@ -48,7 +48,6 @@ h1 {
   border: 1px solid lightgrey;
 }
 
-
 #pic {
   width: 150px;
   height: auto;
@@ -84,10 +83,52 @@ h1 {
 }
 
 #cart {
-  font-size: 20px;
+  font-size: 22px;
   float: right;
+  margin-top: 20px;
+}
+
+#cart:hover {
+  cursor: pointer;
 }
 
 #checkout {
   font-size: 20px;
+}
+
+/* Cart View Page */
+#cart-page-title {
+  text-align: center;
+}
+
+#cart-page-view {
+  margin-left: 10px;
+}
+
+#cart-continueShopping {
+  border-style: groove;
+  margin: auto;
+  width: 40%;
+  height: 30px;
+  text-align: center;
+}
+
+#cart-continueShopping:hover {
+  cursor: pointer;
+}
+
+#cartContainer {
+  outline: 1px solid blue;
+}
+
+#cart-pic {
+  width: 160px;
+}
+
+#cart-name {
+  font-size: 30px;
+}
+
+#nameDescription {
+  display: inline;
 }
