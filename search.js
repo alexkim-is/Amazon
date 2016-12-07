@@ -100,7 +100,7 @@ function renderItemDetail (eachItem) {
 $search.addEventListener('click', function (event) {
     event.preventDefault();
     var $inventory = document.getElementById('inventory-view');
-    $inventory.innerHTML = '';
+    $inventory.innerHTM = '';
     var $searchText = document.getElementById('search').value;
     if ($searchText.trim() == false) return;
     var $result = searchItems (inventory, $searchText);

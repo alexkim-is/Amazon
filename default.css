@@ -131,18 +131,22 @@
 
 #cart-pic {
   width: 160px;
+  padding: 5px;
 }
 
 #cart-name {
   font-size: 30px;
+  padding: 2px;
 }
 
 #nameDescription {
   display: inline;
+  margin-left: 3px;
 }
 
 #cartTotal {
   font-size: 20px;
   text-align: right;
   float: right;
+  padding: 3px;
 }
