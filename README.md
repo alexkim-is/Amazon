@@ -12,7 +12,7 @@ A user can read the detailed description of the product and add to cart.
 
 
 
-A user can see the total cost of items in the cart, and return to shopping if desired. 
+A user can click on the cart to see the total cost of items in the cart, and return to shopping if desired. 
 ![screen shot 2016-12-07 at 11 25 14 am](https://cloud.githubusercontent.com/assets/22905837/20983065/dfe3ed4e-bc6f-11e6-94ff-4f3d1e99205a.png)
 
 
