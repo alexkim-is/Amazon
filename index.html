@@ -4,14 +4,15 @@
     <meta charset="utf-8">
     <title>Search Amazon</title>
     <link href="default.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-      <div id="search-box"> <h1>Search Amazon</h1></div>
-      <input id="search" type="text" placeholder="What type of cat do you have?">
-      <button id="search-button" type="submit">Search</button>
+      <div id="search-box"> <h1 id="title">Search Amazon</h1></div>
+      <input id="search" type="text" class="active" placeholder="Fat cat, lazy cat ...">
+      <button id="search-button" type="submit" class="active">Search</button>
       <div id="view">
-        <div id="cart">Items</div>
-        <div id="checkout">Checkout Screen</div>
+        <div><i class="fa fa-shopping-cart" id="cart"> 0 Items</i></div>
+        <div id="cart-view" class="hidden"></div>
         <div id="inventory-view" class="active"></div>
         <div id="detail-view" class="hidden"></div>
       </div>

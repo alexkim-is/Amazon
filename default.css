@@ -1,5 +1,20 @@
-h1 {
-  margin-left: 40%;
+#title {
+  text-align: center;
+  size: 35px;
+  color: orange;
+  text-shadow: 1px red;
+}
+
+#search-box:hover {
+  cursor: pointer;
+}
+
+#search-button:hover {
+  cursor: pointer;
+}
+
+#search-button {
+  height: 30px;
 }
 
 #search-term {
@@ -15,6 +30,17 @@ h1 {
 }
 
 .container {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  width: 220px;
+  height: auto;
+  text-align: center;
+  border: 1px solid lightgrey;
+}
+
+.detail-contianer {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -60,10 +86,67 @@ h1 {
 }
 
 #cart {
-  font-size: 20px;
+  font-size: 22px;
   float: right;
+  margin-top: 20px;
+}
+
+#cart:hover {
+  cursor: pointer;
 }
 
 #checkout {
   font-size: 20px;
+}
+
+/* Cart View Page */
+#cart-page-title {
+  text-align: center;
+  font-size: 30px;
+}
+
+#cart-page-view {
+  margin-left: 10px;
+}
+
+#cart-continueShopping {
+  border-style: groove;
+  margin: auto;
+  width: 40%;
+  height: 30px;
+  text-align: center;
+}
+
+#cart-continueShopping:hover {
+  cursor: pointer;
+}
+
+#cartContainer {
+  outline: 1px solid blue;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+#cart-pic {
+  width: 160px;
+  padding: 5px;
+}
+
+#cart-name {
+  font-size: 30px;
+  padding: 2px;
+}
+
+#nameDescription {
+  display: inline;
+  margin-left: 3px;
+}
+
+#cartTotal {
+  font-size: 20px;
+  text-align: right;
+  float: right;
+  padding: 3px;
 }
